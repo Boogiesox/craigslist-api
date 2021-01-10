@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`API V1 /hello GET / should return 200 OK 1`] = `
+Object {
+  "success": true,
+}
+`;
+
+exports[`API V1 /upload POST / should return 201, the document added to storage and call s3.putObject, s3.getSignedUrl - one file 1`] = `
+Object {
+  "data": Array [
+    Object {
+      "key": "GENERIC_UPLOAD_USER_ID/3eaf17869bb51bf27bd7c91bc9853973",
+      "url": "https://dummy.url.com",
+    },
+  ],
+}
+`;
