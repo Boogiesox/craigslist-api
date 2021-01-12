@@ -19,4 +19,10 @@ export const categoriesService = {
             .then(json => json
                 .map((categoryDatum: CategoryDatum) => categoryFactory(categoryDatum)));
     },
+
+    getCategory: async function (id: string): Promise<Category> {
+        return fetch(`${CL_REF_API_BASE}/Categories/${id}`)
+            .then(res => res.json())
+            .then(categoryDatum => categoryFactory(categoryDatum));
+    },
 };

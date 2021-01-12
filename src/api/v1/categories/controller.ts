@@ -12,4 +12,15 @@ export const categoriesController = {
             throw Error('Cannot get resource /categories');
         }
     },
+
+    category: async function (req: Request, res: Response): Promise<void> {
+        try {
+            const { id } = req.params;
+            const categories = await categoriesService.getCategory(id);
+            res.status(200)
+                .json(categories);
+        } catch {
+            throw Error('Cannot get resource /categories');
+        }
+    },
 };
