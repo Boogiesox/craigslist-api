@@ -8,7 +8,7 @@ export type AreaDatum = {
     Longitude: number;
     Region: string;
     ShortDescription: string;
-    SubAreas?: Array<Subarea>;
+    SubAreas?: Array<SubAreaDatum>;
     Timezone: string;
 }
 

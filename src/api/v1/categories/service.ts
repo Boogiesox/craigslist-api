@@ -15,14 +15,21 @@ function categoryFactory(categoryDatum: CategoryDatum): Category {
 export const categoriesService = {
     getCategories: async function (): Promise<Array<Category>> {
         return fetch(`${CL_REF_API_BASE}/Categories`)
-            .then(res => res.json())
-            .then(json => json
-                .map((categoryDatum: CategoryDatum) => categoryFactory(categoryDatum)));
+            .then(res => res.ok
+                ? res.json()
+                .then(categoryData => categoryData
+                    .map((categoryDatum: CategoryDatum) => categoryFactory(categoryDatum)))
+                : res
+            );
     },
 
     getCategory: async function (id: string): Promise<Category> {
         return fetch(`${CL_REF_API_BASE}/Categories/${id}`)
-            .then(res => res.json())
-            .then(categoryDatum => categoryFactory(categoryDatum));
+            .then(res => res.ok
+                ? res.json()
+                    .then(categoryDatum => categoryFactory(categoryDatum))
+                    .catch(err => err.json())
+                : res
+            );
     },
 };
