@@ -29,15 +29,15 @@ export function clHTMLResponseParser(res: Response, clHTMLResponse: any): void {
     const resultRows = $('[data-pid]');
 
     const resultsData = resultRows.map((i, resultRow) => {
+        const resultHeading = $(resultRow).find('.result-info h3 a').first();
+        const resultPrice = $(resultRow).find('.result-price').first();
         const resultHref = $(resultRow).children('a[href]')[0];
         const resultDate = $(resultRow).find('.result-info time[datetime]')[0];
-        const resultHeading= $(resultRow).find('.result-info h3 a');
         const resultDataIds = dataIdsFactory(resultHref.attribs['data-ids']);
-
-        console.log(resultHeading);
 
         return {
             title: resultHeading.text(),
+            price: resultPrice.text(),
             timestamp:  timestampFactory(resultDate.attribs['datetime']),
             postId: resultRow.attribs['data-pid'],
             repostId: resultRow.attribs['data-repost-of'],
