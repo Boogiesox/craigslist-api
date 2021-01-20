@@ -17,8 +17,8 @@ export const categoriesService = {
         return fetch(`${CL_REF_API_BASE}/Categories`)
             .then(res => res.ok
                 ? res.json()
-                .then(categoryData => categoryData
-                    .map((categoryDatum: CategoryDatum) => categoryFactory(categoryDatum)))
+                    .then(categoryData => categoryData
+                        .map((categoryDatum: CategoryDatum) => categoryFactory(categoryDatum)))
                 : res
             );
     },

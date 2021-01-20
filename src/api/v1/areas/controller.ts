@@ -1,7 +1,7 @@
 import { Response, Request } from 'express';
 
 import { areasService } from './service';
-import { clAPIresponseParser } from '../../../middleware/clAPIResponseParser';
+import { clAPIresponseParser } from '../../../util/clAPIResponseParser';
 
 export const areasController = {
     index: async function (req: Request, res: Response): Promise<void> {
